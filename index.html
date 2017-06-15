@@ -16,14 +16,6 @@
   <script type="text/javascript" src="js/react-dom.js"></script>
   <script type="text/javascript" src="js/browser.js"></script>
 
-  <style>
-    #box {
-      height: 200px;
-      width: 150px;
-      background-color: rgba(255,255,140,0.5);
-    }
-  </style>
-
 </head>
 
 <body>
@@ -158,26 +150,23 @@
     })
 
     var Box = React.createClass({
-      componentWillMount() {
-        alert("Box is about to mount")
+      // Called once before the component renders to set the default properties
+      getDefaultProps() {
+        // lets handle styling here
+        return {
+          height: 200,
+          width: 150,
+          backgroundColor: 'rgba(255,255,140,0.5)'
+        }
       },
       render() {
-        return <div id="box"></div>
-      },
-      componentDidMount() {
-        alert("Box did mount")
-      },
-      componentWillUnmount() {
-        alert("Box is about to unmount")
+        return (<div id="box">
+                  <div style={this.props}></div>
+                  <section style={this.props}></section>
+                </div>)
       }
     })
     ReactDOM.render(<Box />, document.getElementById('react-container'))
-
-    var box = document.getElementById('box')
-    box.onclick = function() {
-      ReactDOM.unmountComponentAtNode(document.getElementById('react-container'))
-      alert('Box unmounted')
-    }
   </script>
 </body>
 
