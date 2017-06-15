@@ -21,31 +21,6 @@
   <div id="react-container"></div>
   <script type="text/babel">
 
-    // Introducing State
-    const Checkbox = React.createClass({
-      // getInitialState method is provided by React framework - we are just redefining it
-      getInitialState() {
-        return {checked: true} // { customProperty: value }
-      },
-
-      handleCheck() {
-        // this.setState method is provided by React framework
-        this.setState({checked: !this.state.checked}) // this.state.customPropery: value
-      },
-
-      render() {
-        var msg = "unchecked"
-        if (this.state.checked) { msg = "checked" }
-
-        return (
-          <div>
-            <input type="checkbox" onChange={this.handleCheck} defaultChecked={this.state.checked} />
-            <p>{msg}</p>
-          </div>
-        )
-      }
-    })
-
     const Note = React.createClass({
       getInitialState() {
         return { editing: false }
