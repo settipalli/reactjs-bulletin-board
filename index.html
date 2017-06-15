@@ -23,13 +23,21 @@
   </div>
   <script type="text/babel">
     class Note extends React.Component {
+      edit() {
+        alert('Editing note')
+      }
+
+      remove() {
+        alert('Removing note')
+      }
+      
       render() {
         return (
           <div className="note">
             <p>{this.props.children}</p>
             <span>
-              <button className="btn btn-default">Edit</button>
-              <button className="btn btn-danger">X</button>
+              <button className="btn btn-default" onClick={this.edit}>Edit</button>
+              <button className="btn btn-danger" onClick={this.remove}>X</button>
             </span>
           </div>
         )
