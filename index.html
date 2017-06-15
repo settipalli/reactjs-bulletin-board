@@ -8,6 +8,8 @@
   <title>ReactJS</title>
   <link rel="stylesheet" href="css/font-awesome.css" />
   <link rel="stylesheet" href="css/bootstrap.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  
   <script type="text/javascript" src="js/jquery.js"></script>
   <script type="text/javascript" src="js/bootstrap.js"></script>
   <script type="text/javascript" src="js/react.js"></script>
@@ -20,70 +22,20 @@
     <div id="react-container"></div>
   </div>
   <script type="text/babel">
-
-    // Demonstrating the use of children
-    class MyComponent4 extends React.Component {
+    class Note extends React.Component {
       render() {
-        return <div>
-          <h1>{this.props.text}</h1>
-          <p>{this.props.children}</p>
-        </div>
+        return (
+          <div className="note">
+            <p>{this.props.children}</p>
+            <span>
+              <button className="btn btn-default">Edit</button>
+              <button className="btn btn-danger">X</button>
+            </span>
+          </div>
+        )
       }
     }
-
-    // Demonstrating the use of attributes - Component Properties
-    class MyComponent3 extends React.Component {
-      render() {
-        return <div>
-          <h1>{this.props.text}</h1>
-          <p>My first react component</p>
-        </div>
-      }
-    }
-
-    // Method 3 - Creating a component using 'Stateless Functional Component' syntax
-    const MyStatelessFunctionalComponent = () => {
-        return <div>
-          <h1>Hello World</h1>
-          <p>My first react component</p>
-        </div>
-    }
-
-    // New method using ES6 class
-    class MyComponent1 extends React.Component {
-      render() {
-        return <div>
-          <h1>Hello World</h1>
-          <p>My first react component</p>
-        </div>
-      }
-    }
-    
-    // Old method
-    var MyComponent = React.createClass({
-      render() {
-        return <div>
-          <h1>Hello World</h1>
-          <p>My first react component</p>
-        </div>
-      }
-    })
-
-    ReactDOM.render(<div>
-      <MyComponent4 text="Component 1">
-        This is component 1
-      </MyComponent4>
-      <MyComponent4 text="Component 2">
-        This is component 2
-      </MyComponent4>
-      <MyComponent4 text="Component 3">
-        This is component 3
-      </MyComponent4>
-      <MyComponent4 text="Component 4">
-        This is component 4
-      </MyComponent4>
-      </div>,
-      document.getElementById('react-container'))
+    ReactDOM.render(<Note>Hello, World</Note>,document.getElementById('react-container'))
   </script>
 </body>
 
