@@ -15,6 +15,15 @@
   <script type="text/javascript" src="js/react.js"></script>
   <script type="text/javascript" src="js/react-dom.js"></script>
   <script type="text/javascript" src="js/browser.js"></script>
+
+  <style>
+    #box {
+      height: 200px;
+      width: 150px;
+      background-color: rgba(255,255,140,0.5);
+    }
+  </style>
+
 </head>
 
 <body>
@@ -147,7 +156,28 @@
         )
       }
     })
-    ReactDOM.render(<Board count={10} />, document.getElementById('react-container'))
+
+    var Box = React.createClass({
+      componentWillMount() {
+        alert("Box is about to mount")
+      },
+      render() {
+        return <div id="box"></div>
+      },
+      componentDidMount() {
+        alert("Box did mount")
+      },
+      componentWillUnmount() {
+        alert("Box is about to unmount")
+      }
+    })
+    ReactDOM.render(<Box />, document.getElementById('react-container'))
+
+    var box = document.getElementById('box')
+    box.onclick = function() {
+      ReactDOM.unmountComponentAtNode(document.getElementById('react-container'))
+      alert('Box unmounted')
+    }
   </script>
 </body>
 
