@@ -93,7 +93,7 @@
 
       update(text, id) {
         var notes = this.state.notes.map(
-          (note) => note.id !== id ? note : { id: note.id, text: text}
+          (note) => note.id !== id ? note : { ...note, text: text}
         )
         // console.log({notes})
         this.setState({notes})
