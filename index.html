@@ -59,7 +59,13 @@
       }
     })
 
-    ReactDOM.render(<MyComponent3 text="Hello" />, document.getElementById('react-container'))
+    ReactDOM.render(<div>
+      <MyComponent3 text="Component 1" />
+      <MyComponent3 text="Component 2" />
+      <MyComponent3 text="Component 3" />
+      <MyComponent3 text="Component 4" />
+      </div>,
+      document.getElementById('react-container'))
   </script>
 </body>
 
