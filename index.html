@@ -95,7 +95,7 @@
         return (
           <div className="board">
             {this.state.notes.map(
-              (note) => { return <Note key={note.id} id={note.id}>{note.text}</Note> } 
+              note => { return <Note key={note.id} id={note.id}>{note.text}</Note> } 
             )}
           </div>
         )
