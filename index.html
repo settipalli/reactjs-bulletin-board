@@ -21,6 +21,14 @@
   </div>
   <script type="text/babel">
 
+    // Method 3 - Creating a component using 'Stateless Functional Component' syntax
+    const MyStatelessFunctionalComponent = () => {
+        return <div>
+          <h1>Hello World</h1>
+          <p>My first react component</p>
+        </div>
+    }
+
     // New method using ES6 class
     class MyComponent1 extends React.Component {
       render() {
@@ -41,7 +49,7 @@
       }
     })
 
-    ReactDOM.render(<MyComponent1 />, document.getElementById('react-container'))
+    ReactDOM.render(<MyStatelessFunctionalComponent />, document.getElementById('react-container'))
   </script>
 </body>
 
