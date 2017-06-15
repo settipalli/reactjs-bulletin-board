@@ -58,6 +58,8 @@
       },
 
       save() {
+        var value = this.refs.newText.value
+        alert("New value: " + value)
         this.setState({ editing: false })
       },
 
@@ -68,7 +70,7 @@
       renderForm() {
         return (
           <div className="note">
-            <textarea>{this.props.children}</textarea>
+            <textarea ref="newText" >{this.props.children}</textarea>
             <span>
               <button className="btn btn-default" onClick={this.save}>Save</button>
             </span>
