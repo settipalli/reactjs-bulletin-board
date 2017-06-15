@@ -35,6 +35,13 @@
         }
       },
 
+      componentDidUpdate() {
+        if(this.state.editing) {
+          this.refs.newText.focus()
+          this.refs.newText.select()
+        }
+      },
+
       randomPosition(x, y, s) {
         return (x + Math.ceil(Math.random() * (y-x))) + s
       },
@@ -56,7 +63,7 @@
       renderForm() {
         return (
           <div className="note" style={this.style}>
-            <textarea ref="newText" >{this.props.children}</textarea>
+            <textarea ref="newText" defaultValue={this.props.children}></textarea>
             <span>
               <button className="btn btn-default" onClick={this.save}>Save</button>
             </span>
@@ -149,39 +156,7 @@
       }
     })
 
-    var Box = React.createClass({
-      getInitialState() {
-        return {
-          height: 200,
-          width: 150,
-          backgroundColor: 'rgba(255,255,140,0.5)'
-        }
-      },
-
-      update() {
-        this.setState({backgroundColor: 'red'})
-      },
-
-      shouldComponentUpdate() {
-        alert('shouldComponentUpdate')
-        return true
-      },
-
-      componentWillUpdate() {
-        alert('Box will update')
-      },
-
-      componentDidUpdate() {
-        alert('Box updated')
-      },
-
-      render() {
-        return (<div id="box">
-                  <div style={this.state} onClick={this.update}></div>
-                </div>)
-      }
-    })
-    ReactDOM.render(<Box />, document.getElementById('react-container'))
+    ReactDOM.render(<Board count="10" />, document.getElementById('react-container'))
   </script>
 </body>
 
