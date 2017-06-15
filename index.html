@@ -15,7 +15,8 @@
   <script type="text/javascript" src="js/react.js"></script>
   <script type="text/javascript" src="js/react-dom.js"></script>
   <script type="text/javascript" src="js/browser.js"></script>
-
+  <script type="text/javascript" src="js/fetch.js"></script>
+  <script type="text/javascript" src="js/react-draggable.js"></script>
 </head>
 
 <body>
@@ -35,6 +36,10 @@
         }
       },
 
+      randomPosition(x, y, s) {
+        return (x + Math.ceil(Math.random() * (y-x))) + s
+      },
+
       componentDidUpdate() {
         if(this.state.editing) {
           this.refs.newText.focus()
@@ -42,8 +47,10 @@
         }
       },
 
-      randomPosition(x, y, s) {
-        return (x + Math.ceil(Math.random() * (y-x))) + s
+      // This is a minor enhancement that will not re-render the component
+      // if there has been no changes to its properties or state.
+      shouldComponentUpdate(nextProps, nextState) {
+        return this.props.children !== nextProps.children || this.state !== nextState
       },
 
       edit() {
@@ -156,7 +163,7 @@
       }
     })
 
-    ReactDOM.render(<Board count="10" />, document.getElementById('react-container'))
+    ReactDOM.render(<Board count={10} />, document.getElementById('react-container'))
   </script>
 </body>
 
