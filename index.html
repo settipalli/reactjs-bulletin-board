@@ -21,6 +21,16 @@
   </div>
   <script type="text/babel">
 
+    // Demonstrating the use of attributes - Component Properties
+    class MyComponent3 extends React.Component {
+      render() {
+        return <div>
+          <h1>{this.props.text}</h1>
+          <p>My first react component</p>
+        </div>
+      }
+    }
+
     // Method 3 - Creating a component using 'Stateless Functional Component' syntax
     const MyStatelessFunctionalComponent = () => {
         return <div>
@@ -49,7 +59,7 @@
       }
     })
 
-    ReactDOM.render(<MyStatelessFunctionalComponent />, document.getElementById('react-container'))
+    ReactDOM.render(<MyComponent3 text="Hello" />, document.getElementById('react-container'))
   </script>
 </body>
 
