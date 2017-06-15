@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ReactJS</title>
+  <link rel="stylesheet" href="css/font-awesome.css" />
+  <link rel="stylesheet" href="css/bootstrap.css" />
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript" src="js/bootstrap.js"></script>
+  <script type="text/javascript" src="js/react.js"></script>
+  <script type="text/javascript" src="js/react-dom.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div id="react-container"></div>
+  </div>
+  <script type="text/javascript">
+    ReactDOM.render(
+      React.createElement('div', null, 'Hello, World'),
+      document.getElementById('react-container')
+    );
+  </script>
+</body>
+
+</html>
