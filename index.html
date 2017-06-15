@@ -150,19 +150,34 @@
     })
 
     var Box = React.createClass({
-      // Called once before the component renders to set the default properties
-      getDefaultProps() {
-        // lets handle styling here
+      getInitialState() {
         return {
           height: 200,
           width: 150,
           backgroundColor: 'rgba(255,255,140,0.5)'
         }
       },
+
+      update() {
+        this.setState({backgroundColor: 'red'})
+      },
+
+      shouldComponentUpdate() {
+        alert('shouldComponentUpdate')
+        return true
+      },
+
+      componentWillUpdate() {
+        alert('Box will update')
+      },
+
+      componentDidUpdate() {
+        alert('Box updated')
+      },
+
       render() {
         return (<div id="box">
-                  <div style={this.props}></div>
-                  <section style={this.props}></section>
+                  <div style={this.state} onClick={this.update}></div>
                 </div>)
       }
     })
