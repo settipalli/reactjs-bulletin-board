@@ -82,13 +82,24 @@
       // Use getInitialState method to set default notes - we return a notes array
       getInitialState() {
         return {
-          notes: [
-            {id: 0, text: 'Call Bob'},
-            {id: 1, text: 'Email Sarah'},
-            {id: 2, text: 'Eat Lunch'},
-            {id: 3, text: 'Finish proposal'},
-          ]
+          notes: []
         }
+      },
+
+      nextId() {
+        this.uniqueId = this.uniqueId || 0
+        return this.uniqueId++
+      },
+
+      add(text) {
+        var notes = [
+          ...this.state.notes,
+          {
+            id: this.nextId(),
+            text: text
+          }
+        ]
+        this.setState({notes})
       },
 
       update(text, id) {
@@ -115,9 +126,12 @@
       },
 
       render() {
+        // onClick expects a function definition and not a function pointer. Hence, onClick={this.add} will throw errors
+        // and onClick={ () => this.add() } will work because now a function is invoking this.add()
         return (
           <div className="board">
-            {this.state.notes.map(this.eachNote)} 
+            {this.state.notes.map(this.eachNote)}
+            <button className="btn btn-default" onClick={() => this.add()}>+</button>
           </div>
         )
       }
