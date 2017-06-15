@@ -21,6 +21,16 @@
   </div>
   <script type="text/babel">
 
+    // Demonstrating the use of children
+    class MyComponent4 extends React.Component {
+      render() {
+        return <div>
+          <h1>{this.props.text}</h1>
+          <p>{this.props.children}</p>
+        </div>
+      }
+    }
+
     // Demonstrating the use of attributes - Component Properties
     class MyComponent3 extends React.Component {
       render() {
@@ -60,10 +70,18 @@
     })
 
     ReactDOM.render(<div>
-      <MyComponent3 text="Component 1" />
-      <MyComponent3 text="Component 2" />
-      <MyComponent3 text="Component 3" />
-      <MyComponent3 text="Component 4" />
+      <MyComponent4 text="Component 1">
+        This is component 1
+      </MyComponent4>
+      <MyComponent4 text="Component 2">
+        This is component 2
+      </MyComponent4>
+      <MyComponent4 text="Component 3">
+        This is component 3
+      </MyComponent4>
+      <MyComponent4 text="Component 4">
+        This is component 4
+      </MyComponent4>
       </div>,
       document.getElementById('react-container'))
   </script>
