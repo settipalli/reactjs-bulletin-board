@@ -26,6 +26,18 @@
         return { editing: false }
       },
 
+      // This is a life-cycle method that is invoked just before render() method
+      componentWillMount() {
+        this.style = {
+          right: this.randomPosition(0, window.innerWidth - 150, 'px'),
+          top: this.randomPosition(0, window.innerHeight - 150, 'px')
+        }
+      },
+
+      randomPosition(x, y, s) {
+        return (x + Math.ceil(Math.random() * (y-x))) + s
+      },
+
       edit() {
         this.setState({ editing: true })
       },
@@ -42,7 +54,7 @@
 
       renderForm() {
         return (
-          <div className="note">
+          <div className="note" style={this.style}>
             <textarea ref="newText" >{this.props.children}</textarea>
             <span>
               <button className="btn btn-default" onClick={this.save}>Save</button>
@@ -53,7 +65,7 @@
 
       renderDisplay() {
         return (
-          <div className="note">
+          <div className="note" style={this.style}>
             <p>{this.props.children}</p>
             <span>
               <button className="btn btn-default" onClick={this.edit}>Edit</button>
@@ -127,7 +139,6 @@
 
       render() {
         // onClick expects a function definition and not a function pointer. Hence, onClick={this.add} will throw errors
-        // and onClick={ () => this.add() } will work because now a function is invoking this.add()
         return (
           <div className="board">
             {this.state.notes.map(this.eachNote)}
