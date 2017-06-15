@@ -91,7 +91,11 @@
       },
 
       render() {
-        return this.state.editing ? this.renderForm() : this.renderDisplay()
+        return (
+          <ReactDraggable>
+          {this.state.editing ? this.renderForm() : this.renderDisplay()}
+          </ReactDraggable>
+        )
       }
     })
 
@@ -110,6 +114,21 @@
       getInitialState() {
         return {
           notes: []
+        }
+      },
+
+      componentWillMount() {
+        if (this.props.count) {
+          var url=`http://baconipsum.com/api/?type=all-meat&sentences=${this.props.count}`
+          fetch(url)
+            .then(results => results.json())
+            .then(array => array[0])
+            .then(text => text.split('. '))
+            .then(array => array.forEach(
+              sentence => this.add(sentence)))
+            .catch(function(err) {
+              console.log("Didn't connect to API", err)
+            })
         }
       },
 
