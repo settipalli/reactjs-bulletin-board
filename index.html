@@ -91,12 +91,14 @@
         }
       },
 
+      eachNote(note) {
+        return <Note key={note.id} id={note.id}>{note.text}</Note>
+      },
+
       render() {
         return (
           <div className="board">
-            {this.state.notes.map(
-              note => { return <Note key={note.id} id={note.id}>{note.text}</Note> } 
-            )}
+            {this.state.notes.map(this.eachNote)} 
           </div>
         )
       }
