@@ -20,6 +20,18 @@
     <div id="react-container"></div>
   </div>
   <script type="text/babel">
+
+    // New method using ES6 class
+    class MyComponent1 extends React.Component {
+      render() {
+        return <div>
+          <h1>Hello World</h1>
+          <p>My first react component</p>
+        </div>
+      }
+    }
+    
+    // Old method
     var MyComponent = React.createClass({
       render() {
         return <div>
@@ -29,7 +41,7 @@
       }
     })
 
-    ReactDOM.render(<MyComponent />, document.getElementById('react-container'))
+    ReactDOM.render(<MyComponent1 />, document.getElementById('react-container'))
   </script>
 </body>
 
