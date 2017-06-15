@@ -79,10 +79,24 @@
         }
       },
 
+      // Use getInitialState method to set default notes - we return a notes array
+      getInitialState() {
+        return {
+          notes: [
+            'Call Bob',
+            'Email Sarah',
+            'Eat Lunch',
+            'Finish proposal'
+          ]
+        }
+      },
+
       render() {
         return (
           <div className="board">
-            {this.props.count}
+            {this.state.notes.map(
+              (note, i) => { return <Note key={i}>{note}</Note> } 
+            )}
           </div>
         )
       }
