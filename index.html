@@ -48,16 +48,35 @@
       }
     })
 
-    class Note extends React.Component {
+    const Note = React.createClass({
+      getInitialState() {
+        return { editing: false }
+      },
+
       edit() {
-        alert('Editing note')
-      }
+        this.setState({ editing: true })
+      },
+
+      save() {
+        this.setState({ editing: false })
+      },
 
       remove() {
         alert('Removing note')
-      }
+      },
 
-      render() {
+      renderForm() {
+        return (
+          <div className="note">
+            <textarea>{this.props.children}</textarea>
+            <span>
+              <button className="btn btn-default" onClick={this.save}>Save</button>
+            </span>
+          </div>
+        )
+      },
+
+      renderDisplay() {
         return (
           <div className="note">
             <p>{this.props.children}</p>
@@ -67,9 +86,13 @@
             </span>
           </div>
         )
+      },
+
+      render() {
+        return this.state.editing ? this.renderForm() : this.renderDisplay()
       }
-    }
-    ReactDOM.render(<Checkbox />,document.getElementById('react-container'))
+    })
+    ReactDOM.render(<Note>Hello, World</Note>,document.getElementById('react-container'))
   </script>
 </body>
 
